@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Aditya Burugu
 // 
 // Create Date: 09/23/2023 11:38:28 PM
 // Design Name: 
