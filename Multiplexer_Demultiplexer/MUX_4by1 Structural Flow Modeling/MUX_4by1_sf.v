@@ -41,7 +41,7 @@ and (d2,d1,i[3]);
 
 or (o1,a2,b2);
 
-  or (o2,c2,d2);
+or (o2,c2,d2);
 
 or (y,o1,o2);
 
