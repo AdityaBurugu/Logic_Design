@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Aditya Burugu
 // 
-// Create Date: 11/23/2023 01:29:59 AM
+// Create Date: 11/23/2023 02:17:22 AM
 // Design Name: 
-// Module Name: MUX_8by1_bf_tb
+// Module Name: MUX_8by1_using_2by1_MUX_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,12 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MUX_8by1_bf_tb();
+module MUX_8by1_using_2by1_MUX_tb();
 reg [3:0]s;
 reg[7:0]i;
 wire y;
 
-MUX_8by1_bf x1(y,s,i);
+MUX_8by1_using_2by1_MUX x1(y,s,i);
 
 initial
 begin

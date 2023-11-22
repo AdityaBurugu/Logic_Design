@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: Aditya Burugu
 // 
-// Create Date: 11/20/2023 10:35:55 PM
+// Create Date: 11/23/2023 02:17:11 AM
 // Design Name: 
-// Module Name: MUX_4by1_sf
+// Module Name: MUX_8by1_using_2by1_MUX
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,29 +20,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MUX_4by1_sf(y,s,i);
+module MUX_8by1_using_2by1_MUX(y,s,i);
+input [7:0]i;
+input [2:0]s;
 output y;
-input [1:0]s; 
-input[3:0]i;
+wire [5:0]w;
 
-wire a1,a2,b1,b2,c1,c2,d1,d2,o1,o2;
+MUX_2by1_sf m1(w[0],s[0],i[1:0]);
+MUX_2by1_sf m2(w[1],s[0],i[3:2]);
+MUX_2by1_sf m3(w[2],s[1],w[1:0]);
 
-and (a1,~s[0],~s[1]);
-and (a2,a1,i[0]);
+MUX_2by1_sf m4(w[3],s[0],i[5:4]);
+MUX_2by1_sf m5(w[4],s[0],i[7:6]);
+MUX_2by1_sf m6(w[5],s[1],w[4:3]);
 
-and (b1,~s[0],s[1]);
-and (b2,b1,i[1]);
 
-and (c1,s[0],~s[1]);
-and (c2,c1,i[2]);
+MUX_2by1_sf m7(y,s[2],w[5:2]);
 
-and (d1,s[0],s[1]);
-and (d2,d1,i[3]);
-
-or (o1,a2,b2);
-
-or (o2.c2,d2);
-
-or (y,o1,o2);
 
 endmodule

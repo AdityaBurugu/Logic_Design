@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Aditya Burugu
 // 
-// Create Date: 11/23/2023 01:29:45 AM
+// Create Date: 11/23/2023 02:08:21 AM
 // Design Name: 
-// Module Name: MUX_8by1_bf
+// Module Name: MUX_4by1_using_2by1_MUX
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,24 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MUX_8by1_bf(y,s,i);
-input [3:0]s;
-input [7:0]i;
-output reg y;
+module MUX_4by1_using_2by1_MUX(y,s,i);
+input [3:0]i;
+input [1:0]s;
+output y;
+wire [1:0]w;
 
-always @ (s,i)
-begin
-case(s)   
-0000:y = i[0];
-0001:y = i[1];
-0010:y = i[2];
-0011:y = i[3];
-0100:y = i[4];
-0101:y = i[5];
-0110:y = i[6];
-0111:y = i[7];
-1000:y = i[8];
-endcase
-end
+MUX_2by1_sf m1(w[0],s[0],i[1:0]);
+MUX_2by1_sf m2(w[1],s[0],i[3:2]);
+MUX_2by1_sf m3(y,s[1],w[1:0]);
 endmodule
-
