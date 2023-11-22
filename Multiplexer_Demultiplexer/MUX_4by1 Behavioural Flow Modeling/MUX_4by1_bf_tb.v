@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: Aditya Burugu
+// Engineer: 
 // 
-// Create Date: 11/20/2023 10:35:55 PM
+// Create Date: 11/23/2023 01:22:34 AM
 // Design Name: 
-// Module Name: MUX_4by1_sf
+// Module Name: MUX_4by1_bf_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,29 +20,28 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MUX_4by1_sf(y,s,i);
-output y;
-input [1:0]s; 
-input[3:0]i;
+module MUX_4by1_bf_tb();
+reg [1:0]s;
+reg[3:0]i;
+wire y;
 
-wire a1,a2,b1,b2,c1,c2,d1,d2,o1,o2;
+MUX_4by1_bf x1(y,s,i);
 
-and (a1,~s[0],~s[1]);
-and (a2,a1,i[0]);
+initial
+begin
+s = 2'b00;i=4'b0000;
+#10 s = 2'b00;i=4'b0001;
 
-and (b1,~s[0],s[1]);
-and (b2,b1,i[1]);
+#10 s = 2'b01;i=4'b0000;
+#10 s = 2'b01;i=4'b0010;
 
-and (c1,s[0],~s[1]);
-and (c2,c1,i[2]);
+#10 s = 2'b10;i=4'b0000;
+#10 s = 2'b10;i=4'b0100;
 
-and (d1,s[0],s[1]);
-and (d2,d1,i[3]);
+#10 s = 2'b11;i=4'b0000;
+#10 s = 2'b11;i=4'b1000;
 
-or (o1,a2,b2);
+#10 $finish;
 
-or (o2.c2,d2);
-
-or (y,o1,o2);
-
+end
 endmodule
