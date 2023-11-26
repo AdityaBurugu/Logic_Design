@@ -34,5 +34,6 @@ begin
 #10 {a,b,cin}=3'b101; 
 #10 {a,b,cin}=3'b110; 
 #10 {a,b,cin}=3'b111; 
+#10 $finish;
 end 
 endmodule
